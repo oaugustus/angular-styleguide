@@ -1,4 +1,4 @@
-# Guia de Estilo Angular1
+# Guia de Estilo AngularJS
 
 ## Aprovado pelo Time do Angular
 Agradecimentos especiais a Igor Minar, lider no time do Angular, por revisar, contribuir com feedbacks, e confiar em mim para pastorear este guia. 
@@ -6,7 +6,7 @@ Agradecimentos especiais a Igor Minar, lider no time do Angular, por revisar, co
 ## Propósito
 *Guia de estilo Angular para equipes [@john_papa](//twitter.com/john_papa)*
 
-Se você está procurando por um guia de estilo para sintaxe, convenções, e estruturação de aplicações AngularJS, então está no passo certo. Esses estilos são baseados em minha experiência com [Angular](//angularjs.org), apresentações, [Cursos de treinamento na Pluralsight](http://app.pluralsight.com/author/john-papa)e trabalhando com equipes.
+Se você está procurando por um guia de estilo para sintaxe, convenções, e estruturação de aplicações AngularJS, então está no passo certo. Esses estilos são baseados em minha experiência com [AngularJS](//angularjs.org), apresentações, [Cursos de treinamento na Pluralsight](http://app.pluralsight.com/author/john-papa)e trabalhando com equipes.
 
 O propósito deste guia de estilo é fornecer uma orientação na construção de aplicações Angular, mostrando as convenções que eu uso e, mais importante, porque ela foi escolhida.
 
