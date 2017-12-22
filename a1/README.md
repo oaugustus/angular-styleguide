@@ -4,13 +4,13 @@
 Agradecimentos especiais a Igor Minar, lider no time do Angular, por revisar, contribuir com feedbacks, e confiar em mim para pastorear este guia. 
 
 ## Propósito
-*Opinionated Angular style guide for teams by [@john_papa](//twitter.com/john_papa)*
+*Guia de estilo Angular para equipes [@john_papa](//twitter.com/john_papa)*
 
-If you are looking for an opinionated style guide for syntax, conventions, and structuring Angular applications, then step right in. These styles are based on my development experience with [Angular](//angularjs.org), presentations, [Pluralsight training courses](http://app.pluralsight.com/author/john-papa) and working in teams.
+Se você está procurando por um guia de estilo para sintaxe, convenções, e estruturação de aplicações AngularJS, então está no passo certo. Esses estilos são baseados em minha experiência com [Angular](//angularjs.org), apresentações, [Cursos de treinamento na Pluralsight](http://app.pluralsight.com/author/john-papa)e trabalhando com equipes.
 
-The purpose of this style guide is to provide guidance on building Angular applications by showing the conventions I use and, more importantly, why I choose them.
+O propósito deste guia de estilo é fornecer uma orientação na construção de aplicações Angular, mostrando as convenções que eu uso e, mais importante, porque ela foi escolhida.
 
->If you like this guide, check out my [Angular Patterns: Clean Code](http://jpapa.me/ngclean) course at Pluralsight which is a companion to this guide.
+>Se você gostar deste guia, confira o meu curso na Pluralsight [Angular Patterns: Clean Code](http://jpapa.me/ngclean) que é um complemento deste guia.
 
   [![Angular Patterns: Clean Code](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/ng-clean-code-banner.png)](http://jpapa.me/ngclean)
 
