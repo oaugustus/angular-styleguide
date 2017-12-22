@@ -31,6 +31,7 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
 ## Índice
 
   1. [Responsabilidade única](#single-responsibility) 
+  
   1. [IIFE](#iife)
   1. [Módulos](#modules) 
   1. [Controladores](#controllers) 
