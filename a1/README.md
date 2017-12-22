@@ -1,9 +1,9 @@
-# Angular 1 Style Guide
+# Guia de Estilo Angular1
 
-## Angular Team Endorsed
-Special thanks to Igor Minar, lead on the Angular team, for reviewing, contributing feedback, and entrusting me to shepherd this guide.
+## Aprovado pelo Time do Angular
+Agradecimentos especiais a Igor Minar, lider no time do Angular, por revisar, contribuir com feedbacks, e confiar em mim para pastorear este guia. 
 
-## Purpose
+## Propósito
 *Opinionated Angular style guide for teams by [@john_papa](//twitter.com/john_papa)*
 
 If you are looking for an opinionated style guide for syntax, conventions, and structuring Angular applications, then step right in. These styles are based on my development experience with [Angular](//angularjs.org), presentations, [Pluralsight training courses](http://app.pluralsight.com/author/john-papa) and working in teams.
