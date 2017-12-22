@@ -24,60 +24,60 @@ Muitos dos meus estilos vieram de muitas seções de programação em par que eu
 ## Veja os estilos em uma aplicação de exemplo
 Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito útil ver isso na prática. Este guia é acomanhado por uma aplicação de exemplo que segue esses estilos e padrões. Você pode encontrar  [a aplicação de exemplo (chamada modular) aqui](https://github.com/johnpapa/ng-demos) na pasta `modular`. Sinta-se livre para pegá-lo, cloná-lo, ou fazer o fork. [Instruções na execução estão neste readme](https://github.com/johnpapa/ng-demos/tree/master/modular).
 
-## Translations
+## Traduções
 
-[Translations of this Angular style guide](https://github.com/johnpapa/angular-styleguide/tree/master/a1/i18n) are maintained by the community and can be found here.
+[Traduções deste guia de estilo do AngularJS](https://github.com/johnpapa/angular-styleguide/tree/master/a1/i18n) são mantidadas pela comunidade e podem ser encontradas aqui.
 
-## Table of Contents
+## Índice
 
-  1. [Single Responsibility](#single-responsibility)
+  1. [Responsabilidade única](#single-responsibility)
   1. [IIFE](#iife)
-  1. [Modules](#modules)
-  1. [Controllers](#controllers)
-  1. [Services](#services)
-  1. [Factories](#factories)
-  1. [Data Services](#data-services)
-  1. [Directives](#directives)
-  1. [Resolving Promises](#resolving-promises)
-  1. [Manual Annotating for Dependency Injection](#manual-annotating-for-dependency-injection)
-  1. [Minification and Annotation](#minification-and-annotation)
-  1. [Exception Handling](#exception-handling)
-  1. [Naming](#naming)
-  1. [Application Structure LIFT Principle](#application-structure-lift-principle)
-  1. [Application Structure](#application-structure)
-  1. [Modularity](#modularity)
-  1. [Startup Logic](#startup-logic)
+  1. [Módulos](#modules)
+  1. [Controladores](#controllers)
+  1. [Serviços](#services)
+  1. [Factories](#factories)
+  1. [Serviços de dados](#data-services)
+  1. [Diretivas](#directives)
+  1. [Resolvendo promessas](#resolving-promises)
+  1. [Anotação manual para injeço de dependência](#manual-annotating-for-dependency-injection)
+  1. [Minificação e Anotação](#minification-and-annotation)
+  1. [Manipulação de exceção](#exception-handling)
+  1. [Nomeação](#naming)
+  1. [Estrutura da aplicação Princípio LIFT](#application-structure-lift-principle)
+  1. [Estrutura da Aplicação](#application-structure)
+  1. [Modularidade](#modularity)
+  1. [Lógica de inicialização](#startup-logic)
   1. [Angular $ Wrapper Services](#angular--wrapper-services)
-  1. [Testing](#testing)
-  1. [Animations](#animations)
-  1. [Comments](#comments)
+  1. [Testes](#testing)
+  1. [Animações](#animations)
+  1. [Comentários](#comments)
   1. [JSHint](#js-hint)
   1. [JSCS](#jscs)
-  1. [Constants](#constants)
-  1. [File Templates and Snippets](#file-templates-and-snippets)
-  1. [Yeoman Generator](#yeoman-generator)
-  1. [Routing](#routing)
-  1. [Task Automation](#task-automation)
-  1. [Filters](#filters)
-  1. [Angular Docs](#angular-docs)
+  1. [Constantes](#constants)
+  1. [Arquivos de templates e fragmentos](#file-templates-and-snippets)
+  1. [Gerador Yeoman](#yeoman-generator)
+  1. [Rotas](#routing)
+  1. [Automação de tarefas](#task-automation)
+  1. [Filtros](#filters)
+  1. [Documentaço AngularJS](#angular-docs)
 
-## Single Responsibility
+## Responsabilidade única
 
-### Rule of 1
-###### [Style [Y001](#style-y001)]
+### Regra do 1
+###### [Estilo [Y001](#style-y001)]
 
-  - Define 1 component per file, recommended to be less than 400 lines of code.
+  - Defina 1 componente por arquivo, preferenciamente tendo menos que 400 linhas de código.
 
-  *Why?*: One component per file promotes easier unit testing and mocking.
+  *Por que?*: Um componente por arquivo promove uma unidade de teste e mocking mais fácil.
 
-  *Why?*: One component per file makes it far easier to read, maintain, and avoid collisions with teams in source control.
+  *Por que?*: Um componente por arquivo facilita a legibilidade, manutenção, e evita colisões com equipes no controle do código fonte.
 
-  *Why?*: One component per file avoids hidden bugs that often arise when combining components in a file where they may share variables, create unwanted closures, or unwanted coupling with dependencies.
+  *Por que?*: Um componente por arquivo evita bugs ocultos que frequentemente surgem ao combinar componentes em um arquivo onde eles podem compartilhar variáveis, criar clousures indesejadas, ou acomplamento indesejáveis com dependências.
 
-  The following example defines the `app` module and its dependencies, defines a controller, and defines a factory all in the same file.
+  O seguinte exemplo define um módulo `app` e suas dependências, define um controlador, e define uma factory, tudo num mesmo arquivo.
 
   ```javascript
-  /* avoid */
+  /* evite */
   angular
       .module('app', ['ngRoute'])
       .controller('SomeController', SomeController)
@@ -88,10 +88,10 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   function someFactory() { }
   ```
 
-  The same components are now separated into their own files.
+  Os mesmos componentes agora esto separados em seus próprios arquivos.
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
   // app.module.js
   angular
@@ -99,7 +99,7 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   ```
 
   ```javascript
-  /* recommended */
+  /* recomentado */
 
   // some.controller.js
   angular
@@ -110,7 +110,7 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
   // some.factory.js
   angular
@@ -120,24 +120,24 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   function someFactory() { }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Voltar ao topo](#table-of-contents)**
 
-### Small Functions
-###### [Style [Y002](#style-y002)]
+### Pequenas funções
+###### [Estilo [Y002](#style-y002)]
 
-  - Define small functions, no more than 75 LOC (less is better).
+  - Defina pequenas funções, no mais do que 75 LOC (menos é melhor).
 
-  *Why?*: Small functions are easier to test, especially when they do one thing and serve one purpose.
+  *Por que?*: Pequenas funções so mais fáceis de testar, especialmente quando elas faze, uma coisa e servem para um único propósito.
 
-  *Why?*: Small functions promote reuse.
+  *Por que?*: Pequenas funções promovem reuso.
 
-  *Why?*: Small functions are easier to read.
+  *Por que?*: Pequenas funções são fáceis de ler.
 
-  *Why?*: Small functions are easier to maintain.
+  *Por que?*: Pequenas funções são mais fáceis de manter.
 
-  *Why?*: Small functions help avoid hidden bugs that come with large functions that share variables with external scope, create unwanted closures, or unwanted coupling with dependencies.
+  *Por que?*: Pequenas funções ajudam a evitar bugs ocultos que surgem com funções grandes que compartilham variáveis com escopo externo, cria clouseres indesejadas, ou acomplamento com dependências indesejáveis.
 
-**[Back to top](#table-of-contents)**
+**[Voltar ao topo](#table-of-contents)**
 
 ## IIFE
 ### JavaScript Scopes
