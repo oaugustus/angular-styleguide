@@ -30,7 +30,7 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
 
 ## Índice
 
-  1. [Single Responsibility](#single-responsibility)
+  1. [Responsabilidade unica](#responsabilidade-unica)
   1. [IIFE](#iife)
   1. [Modules](#modules)
   1. [Controllers](#controllers)
@@ -58,7 +58,7 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   1. [License](#license)
 
 
-## Responsabilidade única
+## Responsabilidade unica
 
 ### Regra do 1
 ###### [Estilo [Y001](#style-y001)]
@@ -117,7 +117,7 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   function someFactory() { }
   ```
 
-**[Voltar ao topo](#table-of-contents)**
+**[Voltar ao topo](#indice)**
 
 ### Pequenas funções
 ###### [Estilo [Y002](#style-y002)]
@@ -134,26 +134,26 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
 
   *Por que?*: Pequenas funções ajudam a evitar bugs ocultos que surgem com funções grandes que compartilham variáveis com escopo externo, cria clouseres indesejadas, ou acomplamento com dependências indesejáveis.
 
-**[Voltar ao topo](#table-of-contents)**
+**[Voltar ao topo](#indice)**
 
 ## IIFE
-### JavaScript Scopes
+### Escopos Javascript
 ###### [Style [Y010](#style-y010)]
 
-  - Wrap Angular components in an Immediately Invoked Function Expression (IIFE).
+  - Envolva os componentes angular em uma Expresso de Função Imediatamente Invocada(IIFE).
 
-  *Why?*: An IIFE removes variables from the global scope. This helps prevent variables and function declarations from living longer than expected in the global scope, which also helps avoid variable collisions.
+  *Por que?*: Uma IIFE remove variáveis do escopo global. Isso ajuda a previnir declaração de funções e variáveis de viverem mais do que o esperado no escopo global, que também ajuda a evitar as colisões de variáveis.
 
-  *Why?*: When your code is minified and bundled into a single file for deployment to a production server, you could have collisions of variables and many global variables. An IIFE protects you against both of these by providing variable scope for each file.
-
+  *Por que?*: Quando seu código é minificado e empacotado em um único arquivo para implantação em um servidor de produção, você pode ter colisões de muitas variáveis globais. Uma IIFE protege você contra ambas as situações fornecendo um escopo de variável para cada arquivo.
+  
   ```javascript
-  /* avoid */
+  /* evite */
   // logger.js
   angular
       .module('app')
       .factory('logger', logger);
 
-  // logger function is added as a global variable
+  // a função logger é adicionada como uma variável de escopo global
   function logger() { }
 
   // storage.js
@@ -161,16 +161,16 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
       .module('app')
       .factory('storage', storage);
 
-  // storage function is added as a global variable
+  // a funço storage é adicionada como uma variável de escopo global
   function storage() { }
   ```
 
   ```javascript
   /**
-   * recommended
+   * recomendado
    *
-   * no globals are left behind
-   */
+   * nenhuma global deixada para trás
+   */
 
   // logger.js
   (function() {
@@ -195,11 +195,11 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   })();
   ```
 
-  - Note: For brevity only, the rest of the examples in this guide may omit the IIFE syntax.
+  - Nota: Por questões de rapidez, o resto dos exemplos deste guia podem omitir a sintaxe IIFE.
 
-  - Note: IIFE's prevent test code from reaching private members like regular expressions or helper functions which are often good to unit test directly on their own. However you can test these through accessible members or by exposing them through their own component. For example placing helper functions, regular expressions or constants in their own factory or constant.
+  - Nota: IIFE's não permite o teste de código de acessar métodos privados como uma exressão regular ou funções utilitárias que so frequentemente boas unidades para ter seus próprios testes. Entretanto, voc pode testar esses através de membros acessíveis ou expondo-os através de seu próprio componente. Por exemplo, colocar funções utilitárias, expressões regulares ou constantes em sua própria factory ou constante.
 
-**[Back to top](#table-of-contents)**
+**[Voltar ao topo](#indice)**
 
 ## Modules
 
