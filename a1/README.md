@@ -201,24 +201,24 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
 
 **[Voltar ao topo](#indice)**
 
-## Modules
+## Modulos
 
-### Avoid Naming Collisions
-###### [Style [Y020](#style-y020)]
+### Evite colisões de nome
+###### [Estilo [Y020](#estilo-y020)]
 
-  - Use unique naming conventions with separators for sub-modules.
+  - Use convenções de nomes com separadores para sub-módulos.
 
-  *Why?*: Unique names help avoid module name collisions. Separators help define modules and their submodule hierarchy. For example `app` may be your root module while `app.dashboard` and `app.users` may be modules that are used as dependencies of `app`.
+  *Por que?*: Nomes unicos ajudam a evitar colisão de nomes de módulos. Separadores ajudam a definir módulos e suas hierarquias. Por exemplo, `app` pode ser um módulo raiz enquanto `app.dashboard` e `app.users` podem ser módulos que são usados como dependências de `app`.
 
-### Definitions (aka Setters)
-###### [Style [Y021](#style-y021)]
+### Definições (mais conhecidos como Setters)
+###### [Estilo [Y021](#estilo-y021)]
 
-  - Declare modules without a variable using the setter syntax.
+  - Declare módulos sem uma variável usando a sintaxe de setter.
 
-  *Why?*: With 1 component per file, there is rarely a need to introduce a variable for the module.
+  *Por que?*: Com 1 componente por arquivo, é raramente necessário indtroduzir uma variável para o módulo.
 
   ```javascript
-  /* avoid */
+  /* evite */
   var app = angular.module('app', [
       'ngAnimate',
       'ngRoute',
@@ -227,10 +227,10 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   ]);
   ```
 
-  Instead use the simple setter syntax.
+  Ao invés, use a sintaxe simples de setter.
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   angular
       .module('app', [
           'ngAnimate',
@@ -241,14 +241,14 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   ```
 
 ### Getters
-###### [Style [Y022](#style-y022)]
+###### [Estilo [Y022](#estilo-y022)]
 
-  - When using a module, avoid using a variable and instead use chaining with the getter syntax.
+  - Ao usar um módulo, evite usar uma variável e ao invés disso, utilize encadeamento com a sintaxe getter.
 
-  *Why?*: This produces more readable code and avoids variable collisions or leaks.
+  *Por que?*: Isso produz um código mais legível, e evita colisões de variáveis ou vazamentos.
 
   ```javascript
-  /* avoid */
+  /* evite */
   var app = angular.module('app');
   app.controller('SomeController', SomeController);
 
@@ -256,7 +256,7 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   angular
       .module('app')
       .controller('SomeController', SomeController);
@@ -265,31 +265,31 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   ```
 
 ### Setting vs Getting
-###### [Style [Y023](#style-y023)]
+###### [Estilo [Y023](#estilo-y023)]
 
-  - Only set once and get for all other instances.
+  - Use set apenas uma vez e get para todas as outras instâncias.
 
-  *Why?*: A module should only be created once, then retrieved from that point and after.
+  *Por que?*: Um módulo deve ser criado apenas uma vez, e então recuperado a partir deste ponto e adiante.
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
-  // to set a module
+  // para setar um módulo
   angular.module('app', []);
 
-  // to get a module
-  angular.module('app');
+  // para pegar um módulo
+  angular.module('app');
   ```
 
-### Named vs Anonymous Functions
-###### [Style [Y024](#style-y024)]
+### Funções nomeadas vs anônimas
+###### [Estilo [Y024](#style-y024)]
 
-  - Use named functions instead of passing an anonymous function in as a callback.
+  - Use funções nomeadas ao invés de passar funções anônimas como um callback.
 
-  *Why?*: This produces more readable code, is much easier to debug, and reduces the amount of nested callback code.
+  *Por que?*: Isso produz um código mais legível, é muito mais fácil e debugar e reduz a quantidade de código de callback encadeado.
 
   ```javascript
-  /* avoid */
+  /* evite */
   angular
       .module('app')
       .controller('DashboardController', function() { })
@@ -297,7 +297,7 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
   // dashboard.js
   angular
@@ -316,7 +316,7 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   function logger() { }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Voltar ao topo](#indice)**
 
 ## Controllers
 
