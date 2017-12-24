@@ -32,8 +32,8 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
 
   1. [Responsabilidade unica](#responsabilidade-unica)
   1. [IIFE](#iife)
-  1. [Modules](#modules)
-  1. [Controllers](#controllers)
+  1. [Modulos](#modulos)
+  1. [Controladores](#controladores)
   1. [Services](#services)
   1. [Factories](#factories)
   1. [Data Services](#data-services)
@@ -318,46 +318,46 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
 
 **[Voltar ao topo](#indice)**
 
-## Controllers
+## Controladores
 
-### controllerAs View Syntax
-###### [Style [Y030](#style-y030)]
+### Sintaxe view controllerAs
+###### [Estilo [Y030](#estilo-y030)]
 
-  - Use the [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) syntax over the `classic controller with $scope` syntax.
+  - Use a sintaxe [`controllerAs`](http://www.johnpapa.net/do-you-like-your-angular-controllers-with-or-without-sugar/) ao invés da sintaxe `controlador clássico com $scope`.
 
-  *Why?*: Controllers are constructed, "newed" up, and provide a single new instance, and the `controllerAs` syntax is closer to that of a JavaScript constructor than the `classic $scope syntax`.
+  *Por que?*: Controladores são construídos, novos, e forneça uma única instância, e a sintaxe `controllerAs` é mais próximo de um construtor Javascript do que `a sintaxe clássica de $scope`.
 
-  *Why?*: It promotes the use of binding to a "dotted" object in the View (e.g. `customer.name` instead of `name`), which is more contextual, easier to read, and avoids any reference issues that may occur without "dotting".
+  *Por que?*: Isso promove o reuso de vinculação com um objeto "apontado" na view (exemplo `customer.name` ao invés de `name`), que é muito mais contextual, fácil de ler, e evita qualquer questões de referência que podem ocorrer sem um "apontamento".
 
-  *Why?*: Helps avoid using `$parent` calls in Views with nested controllers.
+  *Por que?*: Ajuda a evitar o uso de chamadas `$parent`nas views com controladores encadeados.
 
   ```html
-  <!-- avoid -->
+  <!-- evite -->
   <div ng-controller="CustomerController">
       {{ name }}
   </div>
   ```
 
   ```html
-  <!-- recommended -->
+  <!-- recomendado -->
   <div ng-controller="CustomerController as customer">
       {{ customer.name }}
   </div>
   ```
 
-### controllerAs Controller Syntax
-###### [Style [Y031](#style-y031)]
+### Sintaxe de controlador controllerAs
+###### [Estilo [Y031](#estilo-y031)]
 
-  - Use the `controllerAs` syntax over the `classic controller with $scope` syntax.
+  - Use a sintaxe `controllerAs` ao invés da sintaxe `controlador clássico com $scope`.
 
-  - The `controllerAs` syntax uses `this` inside controllers which gets bound to `$scope`
+  - A sintaxe `controllerAs` usa o `this` dentro dos controladores para ter acesso ao `$scope`
 
-  *Why?*: `controllerAs` is syntactic sugar over `$scope`. You can still bind to the View and still access `$scope` methods.
+  *Por que?*: `controllerAs` é sintaticamente mais suave que `$scope`. Você ainda pode vincular a view e ter acesso aos métodos do `$scope` .
 
-  *Why?*: Helps avoid the temptation of using `$scope` methods inside a controller when it may otherwise be better to avoid them or move the method to a factory, and reference them from the controller. Consider using `$scope` in a controller only when needed. For example when publishing and subscribing events using [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), or [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on).
+  *Por que?*: Ajuda a evitar a tentação de utilizar métodos de `$scope` dentro de um controlador quando isso pode ser feito de outra forma melhor para evitá-los ou mover o método para uma factory, e referenciá-lo de um controlador. Considere utilizar `$scope` em um controlador apenas quando necessário. Por exemplo ao publicar e subscrever para eventos usando [`$emit`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$emit), [`$broadcast`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$broadcast), or [`$on`](https://docs.angularjs.org/api/ng/type/$rootScope.Scope#$on).
 
   ```javascript
-  /* avoid */
+  /* evite */
   function CustomerController($scope) {
       $scope.name = {};
       $scope.sendMessage = function() { };
@@ -365,15 +365,15 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   ```
 
   ```javascript
-  /* recommended - but see next section */
+  /* recomendado - mas veja a próxima seção */
   function CustomerController() {
       this.name = {};
       this.sendMessage = function() { };
   }
   ```
 
-### controllerAs with vm
-###### [Style [Y032](#style-y032)]
+### controllerAs com vm
+###### [Estilo [Y032](#estilo-y032)]
 
   - Use a capture variable for `this` when using the `controllerAs` syntax. Choose a consistent variable name such as `vm`, which stands for ViewModel.
 
