@@ -375,12 +375,12 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
 ### controllerAs com vm
 ###### [Estilo [Y032](#estilo-y032)]
 
-  - Use a capture variable for `this` when using the `controllerAs` syntax. Choose a consistent variable name such as `vm`, which stands for ViewModel.
+  - Use uma variável para capturar o `this` ao utilizar a sintaxe `controllerAs`. Escolha um nome de variável consistente assim como `vm`, que significa ViewModel.
 
-  *Why?*: The `this` keyword is contextual and when used within a function inside a controller may change its context. Capturing the context of `this` avoids encountering this problem.
+  *Por que?*: A palavra chave `this` é contextual e quando usada dentro de uma função dentro de um controlador pode ter seu contexto modificado. Captuar o contexto de `this` evita encontrar esse tipo de problema.
 
   ```javascript
-  /* avoid */
+  /* evite */
   function CustomerController() {
       this.name = {};
       this.sendMessage = function() { };
@@ -388,7 +388,7 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function CustomerController() {
       var vm = this;
       vm.name = {};
@@ -396,14 +396,14 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   }
   ```
 
-  Note: You can avoid any [jshint](http://jshint.com/) warnings by placing the comment above the line of code. However it is not needed when the function is named using UpperCasing, as this convention means it is a constructor function, which is what a controller is in Angular.
+  Nota: Você pode evitar qualquer alerta do [jshint](http://jshint.com/) colocando um comentário acima da linha de código. Entretanto isso no é necessário quando a função é nomeada usando UpperCasing, como esta convenção siginifica que ela é o construtor da função, que é o que o controlador é no AngularJS.
 
   ```javascript
   /* jshint validthis: true */
   var vm = this;
   ```
 
-  Note: When creating watches in a controller using `controller as`, you can watch the `vm.*` member using the following syntax. (Create watches with caution as they add more load to the digest cycle.)
+  Nota: Ao criar observadores ($watch) com a sintaxe `controller as`, você pode observar o membro `vm.*` usando a seguinte sintaxe. (Crie observadores com caultela uma vez que eles adicionam mais carregamento no ciclo de digest.)
 
   ```html
   <input ng-model="vm.title"/>
@@ -421,29 +421,29 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   }
   ```
 
-  Note: When working with larger codebases, using a more descriptive name can help ease cognitive overhead & searchability. Avoid overly verbose names that are cumbersome to type.
+  Nota:Ao trabalhar com grandes códigos base, usar um nome mais descritivo pode ajudar na pesquisa cognitiva e na localização. Evite nomes exagerados que so difíceis de digitar.
 
   ```html
-  <!-- avoid -->
+  <!-- evite -->
   <input ng-model="customerProductItemVm.title">
   ```
 
   ```html
-  <!-- recommended -->
+  <!-- recomendado -->
   <input ng-model="productVm.title">
   ```
 
-### Bindable Members Up Top
+### Membros vinculáveis no topo
 ###### [Style [Y033](#style-y033)]
 
-  - Place bindable members at the top of the controller, alphabetized, and not spread through the controller code.
+  - Coloque membros vinculáveis no topo do controlador, em ordem alfabética, e não espalhados ao longo do código do controlador.
 
-    *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View.
+    *Por que?*: Colocar membros vinculáveis no topo torna fácil ler e ajuda você a instantaneamente identificar quais membros do controlador podem ser vinculados e usados na View.
 
-    *Why?*: Setting anonymous functions in-line can be easy, but when those functions are more than 1 line of code they can reduce the readability. Defining the functions below the bindable members (the functions will be hoisted) moves the implementation details down, keeps the bindable members up top, and makes it easier to read.
+    *Por que?*: Definir funções anônimas in-line pode ser fácil, mas quando essas funções são maiores do que 1 linha de código elas podem reduzir a legibilidade. Definindo funções abaixo dos membros vinculáveis (as funções serão içadas) movendo os detalhes de implementaço para baixo, mantenha os membros vinculáveis no topo, isso facilita a leitura.
 
   ```javascript
-  /* avoid */
+  /* evite */
   function SessionsController() {
       var vm = this;
 
@@ -462,7 +462,7 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   ```
 
   ```javascript
-  /* recommended */
+  /* recomentado */
   function SessionsController() {
       var vm = this;
 
@@ -488,12 +488,12 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   }
   ```
 
-![Controller Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-1.png)
+![Controlador usando "Declaraço acima"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-1.png)
 
-  Note: If the function is a 1 liner consider keeping it right up top, as long as readability is not affected.
+  Nota: Se a função possui 1 linha de código, considere mantê-la no topo, uma vez que não irá afetar a legibilidade.
 
   ```javascript
-  /* avoid */
+  /* evite */
   function SessionsController(data) {
       var vm = this;
 
@@ -514,7 +514,7 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function SessionsController(sessionDataService) {
       var vm = this;
 
