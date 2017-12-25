@@ -601,22 +601,22 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   }
   ```
 
-### Defer Controller Logic to Services
-###### [Style [Y035](#style-y035)]
+### Designe lógicas do controlador para Serviços
+###### [Estilo [Y035](#estilo-y035)]
 
-  - Defer logic in a controller by delegating to services and factories.
+  - Designe lógica em um controlador ao delegá-las para serviços de factories.
 
-    *Why?*: Logic may be reused by multiple controllers when placed within a service and exposed via a function.
+    *Por que?*: Lógica pode ser reutilizada por múltiplos controladores quando colocadas dentro de um serviço e exposta via função.
 
-    *Why?*: Logic in a service can more easily be isolated in a unit test, while the calling logic in the controller can be easily mocked.
+    *Por que?*: Lógica em um serviço pode ser mais facilmente isolada em um teste unitário, enquanto a chamada da lógica no controlador pode ser facilmente simulada.
 
-    *Why?*: Removes dependencies and hides implementation details from the controller.
+    *Por que?*: Remova dependências e esconda detalhes de implementação do controlador.
 
-    *Why?*: Keeps the controller slim, trim, and focused.
+    *Por que?*: Mantenha o controlador magro, aparado e focado.
 
   ```javascript
 
-  /* avoid */
+  /* evite */
   function OrderController($http, $q, config, userInfo) {
       var vm = this;
       vm.checkCredit = checkCredit;
@@ -625,28 +625,29 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
 
       function checkCredit() {
           var settings = {};
-          // Get the credit service base URL from config
-          // Set credit service required headers
-          // Prepare URL query string or data object with request data
-          // Add user-identifying info so service gets the right credit limit for this user.
-          // Use JSONP for this browser if it doesn't support CORS
+          // Pega a URL base do serviço de cartão de credido de uma configuração
+          // Seta os cabeçalhos obrigatórios do serviço de cartão de crédito
+          // Prepara a Query String da URL ou objeto de dados com os dados da requisição
+          // Adiciona a identificação do usuário assim o servio pega o limite correto do cartão de crédido para este usurio.
+          // Usa JSONP para este navegador se ele no suportar CORS
           return $http.get(settings)
               .then(function(data) {
-               // Unpack JSON data in the response object
-                 // to find maxRemainingAmount
+               // Desempacota os dados JSON no objeto de resposta
+                 // para encontrar maxRemainingAmount
                  vm.isCreditOk = vm.total <= maxRemainingAmount
               })
               .catch(function(error) {
-                 // Interpret error
+                 // Interpreta o erro
                  // Cope w/ timeout? retry? try alternate service?
-                 // Re-reject with appropriate error for a user to see
-              });
+                 // Rejeita com a mensagem apropriada para o usuário
+              });
+
       };
   }
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function OrderController(creditService) {
       var vm = this;
       vm.checkCredit = checkCredit;
