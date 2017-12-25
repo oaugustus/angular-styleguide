@@ -526,25 +526,25 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   }
   ```
 
-### Function Declarations to Hide Implementation Details
-###### [Style [Y034](#style-y034)]
+### Declaração de funções para esconder detalhes de implementação
+###### [Estilo [Y034](#estilo-y034)]
 
-  - Use function declarations to hide implementation details. Keep your bindable members up top. When you need to bind a function in a controller, point it to a function declaration that appears later in the file. This is tied directly to the section Bindable Members Up Top. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code/).
+  - Use declaração de funções para esconder detalhes de implementação. Mantenha seus membros vinculáveis no topo. Quando você precisar vincular uma função em um controlador, aponte-a para uma declaração de função que aparece depois no arquivo. Isso está vinculado diretamente à seção de membros vinculáveis no topo. Para maiores detalhes veja [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code/).
 
-    *Why?*: Placing bindable members at the top makes it easy to read and helps you instantly identify which members of the controller can be bound and used in the View. (Same as above.)
+    *Por que?*: Colocar membros vinculáveis no topo torna fácil a leitura e ajuda você a instantaneamente identificar quais membros do controlador podem ser vinculados e usados em uma View. (Assim como acima.)
 
-    *Why?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
+    *Por que?*: Colocar os detalhes de implementação de uma função no final do arquivo move a sua complexidade para fora da visão, assim você pode ver as coisas importantes no topo.
 
-    *Why?*: Function declarations are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+    *Por que?*: Declaração de funções são içadas assim no há preocupação de usar uma função antes que ela seja definida (como haveria com as expressões de função).
 
-    *Why?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.
+    *Por que?*: Você nunca terá que se preocupar que declarações de funções que movimentam `var a` antes de `var b` irão quebrar seu código por que `a` depende de `b`.
 
-    *Why?*: Order is critical with function expressions
+    *Por que?*: Ordem é crítica com expressões de função
 
   ```javascript
   /**
-   * avoid
-   * Using function expressions.
+   * evite
+   * Usar expressões de função.
    */
   function AvengersController(avengersService, logger) {
       var vm = this;
@@ -570,13 +570,13 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   }
   ```
 
-  Notice that the important stuff is scattered in the preceding example. In the example below, notice that the important stuff is up top. For example, the members bound to the controller such as `vm.avengers` and `vm.title`. The implementation details are down below. This is just easier to read.
+  Observe que as coisas importantes estão espalhadas no exemplo anterior. No exemplo abaixo, observe que as coisas importantes estão no topo. Por exemplo, os membros vinculádos ao controlador tais como `vm.avengers` e `vm.title`. Os detalhes de implementação estão na parte de baixo. Isso é apenas muito mais fácil de ler.
 
   ```javascript
   /*
-   * recommend
-   * Using function declarations
-   * and bindable members up top.
+   * recomendado
+   * Usar declarações de funções
+   * e membros vinculáveis no topo.
    */
   function AvengersController(avengersService, logger) {
       var vm = this;
