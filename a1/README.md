@@ -662,12 +662,12 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   }
   ```
 
-### Keep Controllers Focused
-###### [Style [Y037](#style-y037)]
+### Mantenha os controladores focados
+###### [Estilo [Y037](#estilo-y037)]
 
-  - Define a controller for a view, and try not to reuse the controller for other views. Instead, move reusable logic to factories and keep the controller simple and focused on its view.
+  - Defina um controlador para uma view, e tente não reutilizar o controlador para outras views. Ao invés disso, mova as lógicas reutilizáveis para factories e mantenha o controlador simples e focado na sua própria view.
 
-    *Why?*: Reusing controllers with several views is brittle and good end-to-end (e2e) test coverage is required to ensure stability across large applications.
+    *Por que?*: Reutilizar controladores em muitas é frágil um bom teste de ponto a ponto será necessário para certificar da estabilidade ao longo de grandes aplicações.
 
 ### Assigning Controllers
 ###### [Style [Y038](#style-y038)]
