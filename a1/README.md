@@ -669,17 +669,17 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
 
     *Por que?*: Reutilizar controladores em muitas é frágil um bom teste de ponto a ponto será necessário para certificar da estabilidade ao longo de grandes aplicações.
 
-### Assigning Controllers
-###### [Style [Y038](#style-y038)]
+### Atribuição de controladores
+###### [Estilo [Y038](#estilo-y038)]
 
-  - When a controller must be paired with a view and either component may be re-used by other controllers or views, define controllers along with their routes.
+  - Quando um controlador precisa ser pareado com uma view e o componente pode ser reutilizado por outros controladores ou views, defina controladores com suas próprias rotas.
 
-    Note: If a View is loaded via another means besides a route, then use the `ng-controller="Avengers as vm"` syntax.
+    Nota: Se uma view é carregada por outro meio além de uma rota, então use a sintaxe `ng-controller="Avengers as vm"`.
 
-    *Why?*: Pairing the controller in the route allows different routes to invoke different pairs of controllers and views. When controllers are assigned in the view using [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), that view is always associated with the same controller.
+    *Por que?*: Para o controlador com uma rota permite que diferentes rotas invoquem diferentes pares de controladores e views. Quando controladores são atribuídos a uma view usando [`ng-controller`](https://docs.angularjs.org/api/ng/directive/ngController), esta view será sempre associada com o mesmo controlador.
 
  ```javascript
-  /* avoid - when using with a route and dynamic pairing is desired */
+  /* evite - ao usar com uma rota, o emparelhamento dinâmico é desejável */
 
   // route-config.js
   angular
@@ -701,7 +701,7 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
   // route-config.js
   angular
@@ -724,7 +724,7 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   </div>
   ```
 
-**[Back to top](#table-of-contents)**
+**[Voltar ao topo](#indice)**
 
 ## Services
 
