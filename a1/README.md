@@ -768,30 +768,30 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
 ## Factories
 
 ### Responsabilidade única
-###### [Style [Y050](#style-y050)]
+###### [Estilo [Y050](#estilo-y050)]
 
-  - Factories should have a [single responsibility](https://en.wikipedia.org/wiki/Single_responsibility_principle), that is encapsulated by its context. Once a factory begins to exceed that singular purpose, a new factory should be created.
+  - Factories devem ter uma [responsabilidade única](https://en.wikipedia.org/wiki/Single_responsibility_principle), isso é encapsulado pelo seu contexto. Uma vez que uma factory começa a exceder o seu propósito únic, uma nova factory deverá ser crida.
 
 ### Singletons
 ###### [Style [Y051](#style-y051)]
 
-  - Factories are singletons and return an object that contains the members of the service.
+  - Factories são singletons e retornam um objeto que contém os membros do serviço.
 
-    Note: [All Angular services are singletons](https://docs.angularjs.org/guide/services).
+    Nota: [Todos os serviços são singletons](https://docs.angularjs.org/guide/services).
 
-### Accessible Members Up Top
-###### [Style [Y052](#style-y052)]
+### Membros acessíveis no topo
+###### [Estilo [Y052](#estilo-y052)]
 
-  - Expose the callable members of the service (its interface) at the top, using a technique derived from the [Revealing Module Pattern](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
+  - Exponha os membros chamáveis do serviço (sua interface) no topo, usando uma técnica derivada [Padrão do módulo de revelação](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#revealingmodulepatternjavascript).
 
-    *Why?*: Placing the callable members at the top makes it easy to read and helps you instantly identify which members of the service can be called and must be unit tested (and/or mocked).
+    *Por que?*: Colocar membros chamáveis no topo torna fácil a leitura e ajuda você a instantaneamente identificar quais membros do serviço podem ser chamados e precisam ter testes unitrios (ou simulações).
 
-    *Why?*: This is especially helpful when the file gets longer as it helps avoid the need to scroll to see what is exposed.
+    *Por que?*: Isso é especialmente útil quando o arquivo se torna grande uma vez que ele ajuda a evitar a rolagem para ver o que está exposto.
 
-    *Why?*: Setting functions as you go can be easy, but when those functions are more than 1 line of code they can reduce the readability and cause more scrolling. Defining the callable interface via the returned service moves the implementation details down, keeps the callable interface up top, and makes it easier to read.
+    *Por que?*: Definir funções à medida que você precisa pode ser fácil, mas quando essas funções possuem mais de uma linha de código elas podem reduzir a legibilidade e causar mais rolagem. Definir a interface chamável via os serviço retornado movendo os detalhes de implementaço para baixo, mantém a interface chamável no topo, e torna a leitura mais fácil.
 
   ```javascript
-  /* avoid */
+  /* evite */
   function dataService() {
     var someValue = '';
     function save() {
@@ -810,7 +810,7 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function dataService() {
       var someValue = '';
       var service = {
@@ -832,9 +832,9 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   }
   ```
 
-  This way bindings are mirrored across the host object, primitive values cannot update alone using the revealing module pattern.
+  Desta forma, as ligações são espelhadas em todo o objeto host, os valores primitivos não podem ser atualizados sozinhos usando o padrão de módulo revelador.
 
-![Factories Using "Above the Fold"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-2.png)
+![Factories usando "Declaraço acima"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-2.png)
 
 ### Function Declarations to Hide Implementation Details
 ###### [Style [Y053](#style-y053)]
