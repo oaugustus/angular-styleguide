@@ -34,7 +34,7 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   1. [IIFE](#iife)
   1. [Modulos](#modulos)
   1. [Controladores](#controladores)
-  1. [Services](#services)
+  1. [Serviços](#servi%C3%A7os)
   1. [Factories](#factories)
   1. [Data Services](#data-services)
   1. [Directives](#directives)
