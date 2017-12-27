@@ -726,18 +726,18 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
 
 **[Voltar ao topo](#indice)**
 
-## Services
+## Serviços
 
 ### Singletons
-###### [Style [Y040](#style-y040)]
+###### [Estilo [Y040](#estilo-y040)]
 
-  - Services are instantiated with the `new` keyword, use `this` for public methods and variables. Since these are so similar to factories, use a factory instead for consistency.
+  - Serviços são instanciados com a palavra chave `new`, use `this` para métodos e variáveis públicas. Uma vez que eles são similares a factories, utilize uma factory em seu lugar para ter consistência.
 
-    Note: [All Angular services are singletons](https://docs.angularjs.org/guide/services). This means that there is only one instance of a given service per injector.
+    Nota: [Todos os serviços em AngularJS são singletons](https://docs.angularjs.org/guide/services). Isso significa que há apenas uma instância de um dado serviço por injetor.
 
   ```javascript
-  // service
-  angular
+  // serviço
+  angular
       .module('app')
       .service('logger', logger);
 
@@ -763,11 +763,11 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Voltar ao topo](#indice)**
 
 ## Factories
 
-### Single Responsibility
+### Responsabilidade única
 ###### [Style [Y050](#style-y050)]
 
   - Factories should have a [single responsibility](https://en.wikipedia.org/wiki/Single_responsibility_principle), that is encapsulated by its context. Once a factory begins to exceed that singular purpose, a new factory should be created.
