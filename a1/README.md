@@ -936,23 +936,23 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
 
 **[Voltar ao topo](#indice)**
 
-## Data Services
+## Servicos de dados
 
-### Separate Data Calls
+### Separe chamadas de dados
 ###### [Style [Y060](#style-y060)]
 
-  - Refactor logic for making data operations and interacting with data to a factory. Make data services responsible for XHR calls, local storage, stashing in memory, or any other data operations.
+  - Refatore a lógica para atribuir operações de dados e interação com dados para uma factory. Faa os serviços de dados responsáveis por chamadas XHR, armazenamento local, dados em memória, ou qualquer outra operação de dados.
 
-    *Why?*: The controller's responsibility is for the presentation and gathering of information for the view. It should not care how it gets the data, just that it knows who to ask for it. Separating the data services moves the logic on how to get it to the data service, and lets the controller be simpler and more focused on the view.
+    *Por que?*: A responsabilidade do controlador é para a apresentação e agrupamento de informações para a view. Ela não deve se preocupar sobre como pegar os dados, ela sabe apenas a quem perguntar por eles. Separar os serviços de dados move a lógica de como pegá-los para o serviço de dados, e deixa o controlador ser mais simples e mais focado na view.
 
-    *Why?*: This makes it easier to test (mock or real) the data calls when testing a controller that uses a data service.
+    *Por que?*: Isso torna mais fácil testar (simulado ou real) a chamada de dados ao testar um controlador que usa um serviço de dados.
 
-    *Why?*: Data service implementation may have very specific code to handle the data repository. This may include headers, how to talk to the data, or other services such as `$http`. Separating the logic into a data service encapsulates this logic in a single place hiding the implementation from the outside consumers (perhaps a controller), also making it easier to change the implementation.
+    *Por que?*: Implementação de serviços de dados podem ter códigos muito específicos para manipular um repositório de dados. Isso pode incluír cabeçalhos, como solicitar os dados, ou outros serviços tais como `$http`. Separar a lógica em um serviço de dados encapsula essa lógica em um lugar único escondendo a implementação dos consumidores de fora (talvez um controlador, também torna mais fácil mudar a implementação.
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
-  // dataservice factory
+  //  factory de um serviço de dados
   angular
       .module('app.core')
       .factory('dataservice', dataservice);
@@ -980,12 +980,12 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   }
   ```
 
-Note: The data service is called from consumers, such as a controller, hiding the implementation from the consumers, as shown below.
+Nota: O serviço de dados é chamado por consumidores, tais como um controlador, escondendo a implementaço do consumidor como é mostrado abaixo.
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
-  // controller calling the dataservice factory
+  // controlador chamadno uma factory de um serviço de dados
   angular
       .module('app.avengers')
       .controller('AvengersController', AvengersController);
