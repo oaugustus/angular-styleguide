@@ -836,26 +836,26 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
 
 ![Factories usando "Declaraço acima"](https://raw.githubusercontent.com/johnpapa/angular-styleguide/master/a1/assets/above-the-fold-2.png)
 
-### Function Declarations to Hide Implementation Details
-###### [Style [Y053](#style-y053)]
+### Declaração de funções para esconder detalhes de implementação
+###### [Estilo [Y053](#estilo-y053)]
 
-  - Use function declarations to hide implementation details. Keep your accessible members of the factory up top. Point those to function declarations that appears later in the file. For more details see [this post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
+  - Use declarações de função para esconder detalhes de implementação. Mantenha seus membros acessíveis no topo da factory. Aponte eles para declarações de função que aparecem no final do arquivo. Para mais detalhes veja [este post](http://www.johnpapa.net/angular-function-declarations-function-expressions-and-readable-code).
 
-    *Why?*: Placing accessible members at the top makes it easy to read and helps you instantly identify which functions of the factory you can access externally.
+    *Por que?*: Colocar membros acessíveis no topo, facilita a leitura e ajuda você a instantaneamente identificar quais funções da factory você pode acessar externamente.
 
-    *Why?*: Placing the implementation details of a function later in the file moves that complexity out of view so you can see the important stuff up top.
+    *Por que?*: Colocar os detalhes da implementação de uma função no final do arquivo move sua complexidade para fora da visão assim você pode ver as coisas importantes no topo.
 
-    *Why?*: Function declarations are hoisted so there are no concerns over using a function before it is defined (as there would be with function expressions).
+    *Por que?*: Declarações de função são içadas assim no há preocupação sobre utilizar uma função antes que ela seja definida (como você teria com expressões de função).
 
-    *Why?*: You never have to worry with function declarations that moving `var a` before `var b` will break your code because `a` depends on `b`.
+    *Por que?*: Voc nunca precisará se preocupar que declarações de função que movimentam `var a` antes de `var b` quebrem seu código porque `a` depende de `b`.
 
-    *Why?*: Order is critical with function expressions
+    *Por que?*: Ordem é crítico com expressões de função
 
   ```javascript
   /**
-   * avoid
-   * Using function expressions
-   */
+   * evite
+   * Usar expressões de função
+   */
    function dataservice($http, $location, $q, exception, logger) {
       var isPrimed = false;
       var primePromise;
@@ -893,9 +893,9 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
 
   ```javascript
   /**
-   * recommended
-   * Using function declarations
-   * and accessible members up top.
+   * recomendado
+   * Usar declaração de funções 
+   * e membros acessíveis no topo.
    */
   function dataservice($http, $location, $q, exception, logger) {
       var isPrimed = false;
@@ -934,7 +934,7 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
   }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Voltar ao topo](#indice)**
 
 ## Data Services
 
