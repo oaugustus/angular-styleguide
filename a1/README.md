@@ -28,7 +28,7 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
 
 [Traduções deste guia de estilo do AngularJS](https://github.com/johnpapa/angular-styleguide/tree/master/a1/i18n) são mantidadas pela comunidade e podem ser encontradas aqui.
 
-## [Índice(#indice)]
+## Índice(#indice)
 
 1. [Responsabilidade unica](#responsabilidade-unica)
 1. [IIFE](#iife)
