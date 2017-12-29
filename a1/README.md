@@ -1060,53 +1060,53 @@ Nota: O serviço de dados é chamado por consumidores, tais como um controlador,
 
 **[Voltar ao topo](#indice)**
 
-## Directives
-### Limit 1 Per File
-###### [Style [Y070](#style-y070)]
+## Diretivas
+### Limite de 1 diretiva por arquivo
+###### [Estilo [Y070](#estilo-y070)]
 
-  - Create one directive per file. Name the file for the directive.
+  - Crie uma diretiva por arquivo. Nome do arquivo é o nome da diretiva.
 
-    *Why?*: It is easy to mash all the directives in one file, but difficult to then break those out so some are shared across apps, some across modules, some just for one module.
+    *Por que?*: É fácil colocar todas as diretivas em um arquivo, mas dificulta dividí-las para usar em algumas aplicações, alguns módulos, ou apenas para um módulo específico.
 
-    *Why?*: One directive per file is easy to maintain.
+    *Por que?*: Uma diretiva por arquivo é fácil de manter.
 
-    > Note: "**Best Practice**: Directives should clean up after themselves. You can use `element.on('$destroy', ...)` or `scope.$on('$destroy', ...)` to run a clean-up function when the directive is removed" ... from the Angular documentation.
+    > Nota: "**Melhor prática**: Diretivas devem limpar a si mesmas. Você pode usar `element.on('$destroy', ...)` ou `scope.$on('$destroy', ...)` para executar uma função de limpeza quando a diretiva é removida " ... da documentação do AngularJS.
 
   ```javascript
-  /* avoid */
-  /* directives.js */
+  /* evite */
+  /* diretivas.js */
 
   angular
       .module('app.widgets')
 
-      /* order directive that is specific to the order module */
+      /* diretiva de pedido que é especfica do módulo de pedidos order directive that is specific to the order module */
       .directive('orderCalendarRange', orderCalendarRange)
 
-      /* sales directive that can be used anywhere across the sales app */
+      /* diretiva de vendas que pode ser usada em qualquer lugar na aplicaço de vendas */
       .directive('salesCustomerInfo', salesCustomerInfo)
 
-      /* spinner directive that can be used anywhere across apps */
+      /* diretiva spinner que pode ser usada em qualquer lugar em qualquer aplicação */
       .directive('sharedSpinner', sharedSpinner);
 
   function orderCalendarRange() {
-      /* implementation details */
+      /* detalhes de implementação */
   }
 
   function salesCustomerInfo() {
-      /* implementation details */
+      /* detalhes de implementação */
   }
 
   function sharedSpinner() {
-      /* implementation details */
+      /* detalhes de implementação */
   }
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   /* calendar-range.directive.js */
 
   /**
-   * @desc order directive that is specific to the order module at a company named Acme
+   * @desc Diretiva de pedido que é especfica do módulo de pedidos da empresa chamada Acme
    * @example <div acme-order-calendar-range></div>
    */
   angular
@@ -1114,16 +1114,16 @@ Nota: O serviço de dados é chamado por consumidores, tais como um controlador,
       .directive('acmeOrderCalendarRange', orderCalendarRange);
 
   function orderCalendarRange() {
-      /* implementation details */
+      /* Detalhes de implementação */
   }
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   /* customer-info.directive.js */
 
   /**
-   * @desc sales directive that can be used anywhere across the sales app at a company named Acme
+   * @desc Diretivas de venda que pode ser usada em qualquer lugar na aplicaço de vendas da empresa chamada Acme
    * @example <div acme-sales-customer-info></div>
    */
   angular
@@ -1136,11 +1136,11 @@ Nota: O serviço de dados é chamado por consumidores, tais como um controlador,
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   /* spinner.directive.js */
 
   /**
-   * @desc spinner directive that can be used anywhere across apps at a company named Acme
+   * @desc Diretiva spinner que pode ser usada em qualquer lugar de qualquer aplicação da empresa Acme
    * @example <div acme-shared-spinner></div>
    */
   angular
@@ -1152,7 +1152,7 @@ Nota: O serviço de dados é chamado por consumidores, tais como um controlador,
   }
   ```
 
-Note: There are many naming options for directives, especially since they can be used in narrow or wide scopes. Choose one that makes the directive and its file name distinct and clear. Some examples are below, but see the [Naming](#naming) section for more recommendations.
+Nota: Há muitas opções de nome para diretivas, especialmente uma vez que elas podem ser usadas num escopo limitado ou amplo. Escolha um que faz a diretiva e seu nome de arquivo serem distintos e claros. Alguns exemplos abaixo, mas veja a seção [Nomeação](#nomeacao) para maiores recomendações.
 
 ### Manipulate DOM in a Directive
 ###### [Style [Y072](#style-y072)]
