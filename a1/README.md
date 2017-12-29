@@ -35,8 +35,8 @@ Enquanto este guia explica o *o que*, *porque* e *como*, eu acho que  muito út
 1. [Modulos](#modulos)
 1. [Controladores](#controladores)
 1. [Serviços](#servicos)
-  1. [Factories](#factories)
-  1. [Data Services](#data-services)
+1. [Factories](#factories)
+1. [Serviços de dados](#servicos-de-dados)
   1. [Directives](#directives)
   1. [Resolving Promises for a Controller](#resolving-promises-for-a-controller)
   1. [Manual Annotating for Dependency Injection](#manual-annotating-for-dependency-injection)
@@ -1014,28 +1014,28 @@ Nota: O serviço de dados é chamado por consumidores, tais como um controlador,
   }
   ```
 
-### Return a Promise from Data Calls
-###### [Style [Y061](#style-y061)]
+### Retorne uma promessa para as chamadas de Dados
+###### [Estilo [Y061](#estilo-y061)]
 
-  - When calling a data service that returns a promise such as `$http`, return a promise in your calling function too.
+  - Ao chamar um serviço de dados que retorna uma promessa assim como `$http`, retorne uma promessa na sua chamada de função também.
 
-    *Why?*: You can chain the promises together and take further action after the data call completes and resolves or rejects the promise.
+    *Por que?*: Você pode encadear as promessas juntas e tomar uma ação futura depois que a chamada de dados resolve ou rejeita a promessa.
 
   ```javascript
-  /* recommended */
+  /* recomendado */
 
   activate();
 
   function activate() {
       /**
-       * Step 1
-       * Ask the getAvengers function for the
-       * avenger data and wait for the promise
+       * Passo 1
+       * Chama a função getAvengers para o 
+       * dados do vingador e espera pela promessa
        */
       return getAvengers().then(function() {
           /**
-           * Step 4
-           * Perform an action on resolve of final promise
+           * Passo 4
+           * Executa uma ação na resolução do final da promessa
            */
           logger.info('Activated Avengers View');
       });
@@ -1043,15 +1043,14 @@ Nota: O serviço de dados é chamado por consumidores, tais como um controlador,
 
   function getAvengers() {
         /**
-         * Step 2
-         * Ask the data service for the data and wait
-         * for the promise
+         * Passo 2
+         * Chama o serviço de dados pelos dados e espera pela promessa
          */
         return dataservice.getAvengers()
             .then(function(data) {
                 /**
-                 * Step 3
-                 * set the data and resolve the promise
+                 * Passo 3
+                 * define os dados e resolve a promessa
                  */
                 vm.avengers = data;
                 return vm.avengers;
@@ -1059,7 +1058,7 @@ Nota: O serviço de dados é chamado por consumidores, tais como um controlador,
   }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Voltar ao topo](#indice)**
 
 ## Directives
 ### Limit 1 Per File
