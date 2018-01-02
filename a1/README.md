@@ -1154,21 +1154,21 @@ Nota: O serviço de dados é chamado por consumidores, tais como um controlador,
 
 Nota: Há muitas opções de nome para diretivas, especialmente uma vez que elas podem ser usadas num escopo limitado ou amplo. Escolha um que faz a diretiva e seu nome de arquivo serem distintos e claros. Alguns exemplos abaixo, mas veja a seção [Nomeação](#nomeacao) para maiores recomendações.
 
-### Manipulate DOM in a Directive
-###### [Style [Y072](#style-y072)]
+### Manipule DOM em uma Diretiva
+###### [Estilo [Y072](#estilo-y072)]
 
-  - When manipulating the DOM directly, use a directive. If alternative ways can be used such as using CSS to set styles or the [animation services](https://docs.angularjs.org/api/ngAnimate), Angular templating, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) or [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), then use those instead. For example, if the directive simply hides and shows, use ngHide/ngShow.
+  - Ao manipular a DOM diretamente, use uma diretiva. Se maneiras alternativas podem ser usadas tais como usar CSS para definir estilos ou os [serviços de animação](https://docs.angularjs.org/api/ngAnimate), template Angular, [`ngShow`](https://docs.angularjs.org/api/ng/directive/ngShow) ou [`ngHide`](https://docs.angularjs.org/api/ng/directive/ngHide), então use esses no lugar. Por exemplo, se a diretiva simplesmente esconde e mostra, use ngHide/ngShow.
 
-    *Why?*: DOM manipulation can be difficult to test, debug, and there are often better ways (e.g. CSS, animations, templates)
+    *Por que?*: Manipulaço DOM pode ser difícil de testar, debugar e há frequentemente maneiras melhores de fazer isso (e.g. CSS, animtações, templates)
 
-### Provide a Unique Directive Prefix
-###### [Style [Y073](#style-y073)]
+### Forneça um prefixo de diretivas único
+###### [Estilo [Y073](#estilo-y073)]
 
-  - Provide a short, unique and descriptive directive prefix such as `acmeSalesCustomerInfo` which would be declared in HTML as `acme-sales-customer-info`.
+  - Forneça um prefixo pequeno, único e descritivo como `acmeSalesCustomerInfo` que pode ser declado no HTML como `acme-sales-customer-info`.
 
-    *Why?*: The unique short prefix identifies the directive's context and origin. For example a prefix of `cc-` may indicate that the directive is part of a CodeCamper app while `acme-` may indicate a directive for the Acme company.
+    *Por que?*: O prefixo único e curto identifica o contexto e origem da diretiva. Por exemplo um prefixo `cc-` pode indicar que a diretiva é parte de uma aplicaço CodeCamper enquanto `acme-` pode indicar que a diretiva é da empresa Acme.
 
-    Note: Avoid `ng-` as these are reserved for Angular directives. Research widely used directives to avoid naming conflicts, such as `ion-` for the [Ionic Framework](http://ionicframework.com/).
+    Nota: Evite o prefixo `ng-` uma vez que ele é reservado para as diretivas do Angular. Pesquisa diretivas usadas amplamente para evitar conflitos de nomeação, tais como `ion-` para o [Ionic Framework](http://ionicframework.com/).
 
 ### Restrict to Elements and Attributes
 ###### [Style [Y074](#style-y074)]
