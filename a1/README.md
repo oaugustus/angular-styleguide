@@ -1170,19 +1170,19 @@ Nota: Há muitas opções de nome para diretivas, especialmente uma vez que elas
 
     Nota: Evite o prefixo `ng-` uma vez que ele é reservado para as diretivas do Angular. Pesquisa diretivas usadas amplamente para evitar conflitos de nomeação, tais como `ion-` para o [Ionic Framework](http://ionicframework.com/).
 
-### Restrict to Elements and Attributes
-###### [Style [Y074](#style-y074)]
+### Restrinja a Elementos e Atributos
+###### [Estilo [Y074](#estilo-y074)]
 
-  - When creating a directive that makes sense as a stand-alone element, allow restrict `E` (custom element) and optionally restrict `A` (custom attribute). Generally, if it could be its own control, `E` is appropriate. General guideline is allow `EA` but lean towards implementing as an element when it's stand-alone and as an attribute when it enhances its existing DOM element.
+  - Ao criar uma diretiva que funciona como um elemento stand-alone, permita restringir a `E` (elemento customizado) e opcionalmente restrito a `A` (atributo customizado). Geralmente, se ele pode ser seu próprio controle, `E` é apropriado. O guia geral é permitir `EA` mas a tendêcia é implementar como um elemento quando é um componente autônomo e como um atributo quando ele melhora um elemento DOM existente.
 
-    *Why?*: It makes sense.
+    *Por que?*: Isto faz sentido.
 
-    *Why?*: While we can allow the directive to be used as a class, if the directive is truly acting as an element it makes more sense as an element or at least as an attribute.
+    *Por que?*: Por mais que você possa permitir que a diretiva seja usada como uma classe, se a diretiva está realmente agindo como um elemento, faz mais sentido como um elemento ou como um atributo.
 
-    Note: EA is the default for Angular 1.3 +
+    Nota: EA é o default para Angular 1.3 +
 
   ```html
-  <!-- avoid -->
+  <!-- evite -->
   <div class="my-calendar-range"></div>
   ```
 
@@ -1207,7 +1207,7 @@ Nota: Há muitas opções de nome para diretivas, especialmente uma vez que elas
   ```
 
   ```html
-  <!-- recommended -->
+  <!-- recomendado -->
   <my-calendar-range></my-calendar-range>
   <div my-calendar-range></div>
   ```
