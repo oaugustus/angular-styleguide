@@ -1232,20 +1232,20 @@ Nota: Há muitas opções de nome para diretivas, especialmente uma vez que elas
   }
   ```
 
-### Directives and ControllerAs
-###### [Style [Y075](#style-y075)]
+### Diretivas e ControllerAs
+###### [Estilo [Y075](#estilo-y075)]
 
-  - Use `controllerAs` syntax with a directive to be consistent with using `controller as` with view and controller pairings.
+  - Use a sintaxe `controllerAs` com uma diretiva para ser consistente com o uso de `controller as` com os pares view e controlador.
 
-    *Why?*: It makes sense and it's not difficult.
+    *Por que?*: Isso faz sentido e não é difícil.
 
-    Note: The directive below demonstrates some of the ways you can use scope inside of link and directive controllers, using controllerAs. I in-lined the template just to keep it all in one place.
+    Nota: A diretiva abaixo mostra algumas das maneiras que voc pode usar o escopo dentro de um link e controladores da diretiva, usando controllerAs. Eu coloquei o template inline para manter tudo em um único lugar.
 
-    Note: Regarding dependency injection, see [Manually Identify Dependencies](#manual-annotating-for-dependency-injection).
+    Nota: A respeito da injeção de dependência, veja [Identifique as dependências manualmente](#anotacao-manual-para-injecao-de-dependencia).
 
-    Note: Note that the directive's controller is outside the directive's closure. This style eliminates issues where the injection gets created as unreachable code after a `return`.
+    Nota: Observe que o controlador da diretiva está fora da clousure da diretiva. Este estilo elimina questões onde a injeção é criada com um código inalcançavel após um `return`.
     
-    Note: Lifecycle hooks were introduced in Angular 1.5. Initialization logic that relies on bindings being present should be put in the controller's $onInit() method, which is guarranteed to always be called after the bindings have been assigned.
+    Nota: Hooks do Lifecycle foram introduzidos no Angular 1.5. Lógica de inicializaço que confia nos bindings que estão presentes devem ser colocadas no método $onInit() do controlador, que é sempre chamado depois dos bindings terem sido atribuídos.
 
   ```html
   <div my-example max="77"></div>
@@ -1265,10 +1265,10 @@ Nota: Há muitas opções de nome para diretivas, especialmente uma vez que elas
           },
           link: linkFunc,
           controller: ExampleController,
-          // note: This would be 'ExampleController' (the exported controller name, as string)
-          // if referring to a defined controller in its separate file.
+          // nota: Isso deve ser 'ExampleController' (o nome do controlador exportado, como string)
+          // se a referência for feita há um controlador que está em um arquivo separado.
           controllerAs: 'vm',
-          bindToController: true // because the scope is isolated
+          bindToController: true // porque o escopo está isolado
       };
 
       return directive;
@@ -1284,19 +1284,19 @@ Nota: Há muitas opções de nome para diretivas, especialmente uma vez que elas
   ExampleController.$inject = ['$scope'];
 
   function ExampleController($scope) {
-      // Injecting $scope just for comparison
-      var vm = this;
+      // Injetando $scope apenas para comparação
+      var vm = this;
       vm.min = 3;
       vm.$onInit = onInit;
       
       //////////
       
       console.log('CTRL: $scope.vm.min = %s', $scope.vm.min);
-      console.log('CTRL: $scope.vm.max = %s', $scope.vm.max); // undefined in Angular 1.5+
+      console.log('CTRL: $scope.vm.max = %s', $scope.vm.max); // indefinido em Angular 1.5+
       console.log('CTRL: vm.min = %s', vm.min);
-      console.log('CTRL: vm.max = %s', vm.max); // undefined in Angular 1.5+
+      console.log('CTRL: vm.max = %s', vm.max); // indefinido em Angular 1.5+
       
-      // Angular 1.5+ does not bind attributes until calling $onInit();
+      // Angular 1.5+ não vincula atributos até que seja chamado o método $onInit();
       function onInit() {
           console.log('CTRL-onInit: $scope.vm.min = %s', $scope.vm.min);
           console.log('CTRL-onInit: $scope.vm.max = %s', $scope.vm.max);
@@ -1313,13 +1313,13 @@ Nota: Há muitas opções de nome para diretivas, especialmente uma vez que elas
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
-Note: You can also name the controller when you inject it into the link function and access directive attributes as properties of the controller.
+Nota: Você pode também nomear o controlador quando você injetá-lo na função link e acessar os atributos da diretiva como propriedades do controlador.
 
   ```javascript
-  // Alternative to above example
+  // Alternativa ao exemplo acima
   function linkFunc(scope, el, attr, vm) {
-      console.log('LINK: scope.min = %s *** should be undefined', scope.min);
-      console.log('LINK: scope.max = %s *** should be undefined', scope.max);
+      console.log('LINK: scope.min = %s *** deve ser indefinido', scope.min);
+      console.log('LINK: scope.max = %s *** deve ser indefinido', scope.max);
       console.log('LINK: vm.min = %s', vm.min);
       console.log('LINK: vm.max = %s', vm.max);
   }
