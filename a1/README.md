@@ -1325,13 +1325,13 @@ Nota: Você pode também nomear o controlador quando você injetá-lo na funçã
   }
   ```
 
-###### [Style [Y076](#style-y076)]
+###### [Estilo [Y076](#estilo-y076)]
 
-  - Use `bindToController = true` when using `controller as` syntax with a directive when you want to bind the outer scope to the directive's controller's scope.
+  - Use `bindToController = true` ao usar a sintaxe `controller as` com uma diretiva quando você quer vincular um escopo externo no escopo do controlador da diretiva.
 
-    *Why?*: It makes it easy to bind outer scope to the directive's controller scope.
+    *Por que?*: Isso torna fácil a vinculação com um escopo externo com o escopo do controlador da diretiva.
 
-    Note: `bindToController` was introduced in Angular 1.3.0.
+    Nota: `bindToController` foi introduzido em Angular 1.3.0.
 
   ```html
   <div my-example max="77"></div>
@@ -1376,22 +1376,22 @@ Nota: Você pode também nomear o controlador quando você injetá-lo na funçã
   <div>min={{vm.min}}<input ng-model="vm.min"/></div>
   ```
 
-**[Back to top](#table-of-contents)**
+**[Voltar ao topo](#indice)**
 
-## Resolving Promises
-### Controller Activation Promises
+## Resolvendo promessas
+### Ativação de promessas do controlador
 ###### [Style [Y080](#style-y080)]
 
-  - Resolve start-up logic for a controller in an `activate` function.
+  - Resolva lógicas de inicialização para um controlador na função `activate`.
 
-    *Why?*: Placing start-up logic in a consistent place in the controller makes it easier to locate, more consistent to test, and helps avoid spreading out the activation logic across the controller.
+    *Por que?*: Colocar lógica de inicialização em um lugar consistente no controlador torna mais fácil localizar, mais consistente de testar e ajuda a evitar espalhamento da lógica de ativação pelo controlador.
 
-    *Why?*: The controller `activate` makes it convenient to re-use the logic for a refresh for the controller/View, keeps the logic together, gets the user to the View faster, makes animations easy on the `ng-view` or `ui-view`, and feels snappier to the user.
+    *Por que?*: A função `activate` do controlador torna conveniente a reutilização da lógica para um recarregamento para um controlador/view, mantém a lógica junta, leva o usuário para a View mais rápido e torna as animações fáceis no `ng-view` ou `ui-view`.
 
-    Note: If you need to conditionally cancel the route before you start using the controller, use a [route resolve](#style-y081) instead.
+    Nota: Se você precisa condicionalmente cancelar a rota antes que você comece a usar o controlador, use [resolvedor de rota](#estilo-y081).
 
   ```javascript
-  /* avoid */
+  /* evite */
   function AvengersController(dataservice) {
       var vm = this;
       vm.avengers = [];
@@ -1405,7 +1405,7 @@ Nota: Você pode também nomear o controlador quando você injetá-lo na funçã
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function AvengersController(dataservice) {
       var vm = this;
       vm.avengers = [];
