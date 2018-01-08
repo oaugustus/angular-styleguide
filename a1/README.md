@@ -1424,21 +1424,21 @@ Nota: Você pode também nomear o controlador quando você injetá-lo na funçã
   }
   ```
 
-### Route Resolve Promises
-###### [Style [Y081](#style-y081)]
+### Promessas de resolução de rotas
+###### [Estilo [Y081](#estilo-y081)]
 
-  - When a controller depends on a promise to be resolved before the controller is activated, resolve those dependencies in the `$routeProvider` before the controller logic is executed. If you need to conditionally cancel a route before the controller is activated, use a route resolver.
+  - Quando um controlador depende que uma promessa seja resolvida antes do controlador ser ativado, resolva essas dependências no  `$routeProvider` antes que a lógica do controlador seja executada. Se você precisar condicionalmente de cancelar uma rota antes que o controlador seja ativado, use um route resolver.
 
-  - Use a route resolve when you want to decide to cancel the route before ever transitioning to the View.
+  - Use um route resolve quando você quiser decidir cancelar a rota antes da sua transição para a View.
 
-    *Why?*: A controller may require data before it loads. That data may come from a promise via a custom factory or [$http](https://docs.angularjs.org/api/ng/service/$http). Using a [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) allows the promise to resolve before the controller logic executes, so it might take action based on that data from the promise.
+    *Por que?*: Um controlador pode requisitar dados antes que eles sejam carregados. Esses dados podem vir de uma promessa via uma factory customizada ou [$http](https://docs.angularjs.org/api/ng/service/$http). Usar um [route resolve](https://docs.angularjs.org/api/ngRoute/provider/$routeProvider) permite que a promessa seja resolvida antes que o controlador execute a lógica, assim pode executar uma ação baseado nos dados que vieram da promessa.
 
-    *Why?*: The code executes after the route and in the controller’s activate function. The View starts to load right away. Data binding kicks in when the activate promise resolves. A “busy” animation can be shown during the view transition (via `ng-view` or `ui-view`)
+    *Por que?*: O código executa depois de uma rota e na função de ativação do controlador. A View comea a carregar da forma correta. A vinculação de dados é rápida quando a promessa ativada se resolve. Uma animação “carregando” pode ser exibida durante a transiço da view(via `ng-view` or `ui-view`)
 
-    Note: The code executes before the route via a promise. Rejecting the promise cancels the route. Resolve makes the new view wait for the route to resolve. A “busy” animation can be shown before the resolve and through the view transition. If you want to get to the View faster and do not require a checkpoint to decide if you can get to the View, consider the [controller `activate` technique](#style-y080) instead.
+    Nota: O código executa antes da rota via promessa. Rejeitar uma promessa cancela a rota. Resolver faz a nova view esperar pela rota para resolver. Uma animação "carregando" pode ser mostrada antes da resolução e através da transição da view. Se você quer que a view seja renderizada mais rápido e não quer requisitar um ponto de checagem para decidir se você pode entrar na view, considere [técnica de `ativação` de controlador](#estilo-y080).
 
   ```javascript
-  /* avoid */
+  /* evite */
   angular
       .module('app')
       .controller('AvengersController', AvengersController);
@@ -1455,7 +1455,7 @@ Nota: Você pode também nomear o controlador quando você injetá-lo na funçã
   ```
 
   ```javascript
-  /* better */
+  /* melhor */
 
   // route-config.js
   angular
@@ -1488,10 +1488,10 @@ Nota: Você pode também nomear o controlador quando você injetá-lo na funçã
   }
   ```
 
-Note: The example below shows the route resolve points to a named function, which is easier to debug and easier to handle dependency injection.
+Nota: O exemplo abaixo mostra a resolução de rota apontando para uma função nomeada, que é mais fácil de debugar e fácil de manipular injeção de dependência.
 
   ```javascript
-  /* even better */
+  /* ainda melhor */
 
   // route-config.js
   angular
@@ -1525,9 +1525,9 @@ Note: The example below shows the route resolve points to a named function, whic
         vm.movies = moviesPrepService.movies;
   }
   ```
-Note: The code example's dependency on `movieService` is not minification safe on its own. For details on how to make this code minification safe, see the sections on [dependency injection](#manual-annotating-for-dependency-injection) and on [minification and annotation](#minification-and-annotation).
+Nota: A dependência do exemplo no serviço `movieService` não é segura para minificação. Para detalhes de como fazer esse código seguro para minificação, veja as seções em [injeção de dependência](#anotacao-manual-para-injecao-de-dependencia) e em [anotação e minificação](#anotacao-e-minificacao).
 
-**[Back to top](#table-of-contents)**
+**[Voltar ao topo](#indice)**
 
 ### Handling Exceptions with Promises
 ###### [Style [Y082](#style-y082)]
