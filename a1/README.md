@@ -1529,21 +1529,21 @@ Nota: A dependência do exemplo no serviço `movieService` não é segura para m
 
 **[Voltar ao topo](#indice)**
 
-### Handling Exceptions with Promises
-###### [Style [Y082](#style-y082)]
+### Manipulando exceções com Promessas
+###### [Estilo [Y082](#estilo-y082)]
 
-  - The `catch` block of a promise must return a rejected promise to maintain the exception in the promise chain.
+  - O bloco `catch` de uma promessa precisa retornar uma promessa rejeitada para manter a exceção na sequencia da promessa.
 
-  - Always handle exceptions in services/factories.
+  - Sempre manipule exceções nos serviços/factories.
 
-    *Why?*: If the `catch` block does not return a rejected promise, the caller of the promise will not know an exception occurred. The caller's `then` will execute. Thus, the user may never know what happened.
+    *Por que?*: Se o bloco `catch` não retorna uma promessa rejeitada, o acionador da promessa não irá saber que uma exceção ocorreu. O acionador irá executar o `then`. Desta forma, o usuário pode nunca saber o que aconteceu.
 
-    *Why?*: To avoid swallowing errors and misinforming the user.
+    *Por que?*: Para evitar a omissão de erros e falta de informação para o usuário.
 
-    Note: Consider putting any exception handling in a function in a shared module and service.
+    Nota: Considere colocar qualquer manipulação de exceção em uma função em um módulo e serviço compartilhado.
 
   ```javascript
-  /* avoid */
+  /* evite */
 
   function getCustomer(id) {
       return $http.get('/api/customer/' + id)
@@ -1562,14 +1562,14 @@ Nota: A dependência do exemplo no serviço `movieService` não é segura para m
           e.data.description = newMessage;
           logger.error(newMessage);
           // ***
-          // Notice there is no return of the rejected promise
+          // Observe que não h retorno da promessa rejeitada
           // ***
       }
   }
   ```
 
   ```javascript
-  /* recommended */
+  /* recomendado */
   function getCustomer(id) {
       return $http.get('/api/customer/' + id)
           .then(getCustomerComplete)
@@ -1591,19 +1591,19 @@ Nota: A dependência do exemplo no serviço `movieService` não é segura para m
   }
   ```
 
-**[Back to top](#table-of-contents)**
+**[Voltar ao topo](#indice)**
 
-## Manual Annotating for Dependency Injection
+## Anotacao manual para injecao de dependencia
 
-### UnSafe from Minification
-###### [Style [Y090](#style-y090)]
+### Inseguro de minificação
+###### [Estilo [Y090](#estilo-y090)]
 
-  - Avoid using the shortcut syntax of declaring dependencies without using a minification-safe approach.
+  - Evite usar a sintaxe reduzida de declaração de dependências sem usar uma abordagem segura para minificação.
 
-    *Why?*: The parameters to the component (e.g. controller, factory, etc) will be converted to mangled variables. For example, `common` and `dataservice` may become `a` or `b` and not be found by Angular.
+    *Por que?*: Os parâmetros do componente (ex. controlador, factory, etc) serão convertidos para variáveis multiladas. Por exemplo, `common` e `dataservice` podem se tornar `a` ou `b` e não serem encontrados pelo Angular.
 
     ```javascript
-    /* avoid - not minification-safe*/
+    /* evite - não seguro para minificação*/
     angular
         .module('app')
         .controller('DashboardController', DashboardController);
@@ -1612,10 +1612,10 @@ Nota: A dependência do exemplo no serviço `movieService` não é segura para m
     }
     ```
 
-    This code may produce mangled variables when minified and thus cause runtime errors.
+    Este código pode produzir variáveis multiladas quando minificado e desta forma causar erros de execução.
 
     ```javascript
-    /* avoid - not minification-safe*/
+    /* evite - não seguro para minificação*/
     angular.module('app').controller('DashboardController', d);function d(a, b) { }
     ```
 
