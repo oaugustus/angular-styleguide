@@ -1619,19 +1619,19 @@ Nota: A dependência do exemplo no serviço `movieService` não é segura para m
     angular.module('app').controller('DashboardController', d);function d(a, b) { }
     ```
 
-### Manually Identify Dependencies
-###### [Style [Y091](#style-y091)]
+### Manualmente identifique as dependencias
+###### [Estilo [Y091](#estilo-y091)]
 
-  - Use `$inject` to manually identify your dependencies for Angular components.
+  - Use `$inject` para manualmente identificar as dependências dos seus componentes Angular.
 
-    *Why?*: This technique mirrors the technique used by [`ng-annotate`](https://github.com/olov/ng-annotate), which I recommend for automating the creation of minification safe dependencies. If `ng-annotate` detects injection has already been made, it will not duplicate it.
+    *Por que?*: Esta técnica espelha a técnica usada pelo [`ng-annotate`](https://github.com/olov/ng-annotate), que eu recomendo para criação automática de minificação de dependências de forma segura. Se `ng-annotate` detecta que uma injeção já foi feita, ele não irá duplicá-la.
 
-    *Why?*: This safeguards your dependencies from being vulnerable to minification issues when parameters may be mangled. For example, `common` and `dataservice` may become `a` or `b` and not be found by Angular.
+    *Por que?*: Isso irá proteger suas dependências de questões de vulnerabilidade quando os parâmetros podem ser multilados. Por exemplo, `common` e `dataservice` podem se tornar `a` e `b` e não serem encontradas no Angular.
 
-    *Why?*: Avoid creating in-line dependencies as long lists can be difficult to read in the array. Also it can be confusing that the array is a series of strings while the last item is the component's function.
+    *Por que?*: Evite criar dependências in-line, uma vez que longas listas podem dificultar a leitura em um array. Também pode ser confuso um arrau como uma série de strings e o último item da lista ser a função do componente.
 
     ```javascript
-    /* avoid */
+    /* evite */
     angular
         .module('app')
         .controller('DashboardController',
@@ -1641,7 +1641,7 @@ Nota: A dependência do exemplo no serviço `movieService` não é segura para m
     ```
 
     ```javascript
-    /* avoid */
+    /* evite */
     angular
       .module('app')
       .controller('DashboardController',
@@ -1652,7 +1652,7 @@ Nota: A dependência do exemplo no serviço `movieService` não é segura para m
     ```
 
     ```javascript
-    /* recommended */
+    /* recomendado */
     angular
         .module('app')
         .controller('DashboardController', DashboardController);
@@ -1663,11 +1663,11 @@ Nota: A dependência do exemplo no serviço `movieService` não é segura para m
     }
     ```
 
-    Note: When your function is below a return statement the `$inject` may be unreachable (this may happen in a directive). You can solve this by moving the Controller outside of the directive.
+    Nota: Quando sua função está abaixo de uma declaração de retorno o `$inject` pode ser inalcansável (isso pode acontecer em uma diretiva). Você pode resolver isso movento o controlador para fora da diretiva.
 
-    ```javascript
-    /* avoid */
-    // inside a directive definition
+    ```javascriptcá
+    /* evite */
+    // dentro da definiço de uma diretiva
     function outer() {
         var ddo = {
             controller: DashboardPanelController,
@@ -1675,15 +1675,15 @@ Nota: A dependência do exemplo no serviço `movieService` não é segura para m
         };
         return ddo;
 
-        DashboardPanelController.$inject = ['logger']; // Unreachable
-        function DashboardPanelController(logger) {
+        DashboardPanelController.$inject = ['logger']; // Inalcansável
+        function DashboardPanelController(logger) {
         }
     }
     ```
 
     ```javascript
-    /* recommended */
-    // outside a directive definition
+    /* recomendado */
+    // fora da definiço de uma diretiva
     function outer() {
         var ddo = {
             controller: DashboardPanelController,
