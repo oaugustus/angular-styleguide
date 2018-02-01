@@ -1697,17 +1697,17 @@ Nota: A dependência do exemplo no serviço `movieService` não é segura para m
     }
     ```
 
-### Manually Identify Route Resolver Dependencies
-###### [Style [Y092](#style-y092)]
+### Manualmente Identifique as dependências do Route Resolver
+###### [Estilo [Y092](#estilo-y092)]
 
-  - Use `$inject` to manually identify your route resolver dependencies for Angular components.
+  - Use `$inject` para manualmente identificar as dependências do seu route resolver para os componentes do Angular.
 
-    *Why?*: This technique breaks out the anonymous function for the route resolver, making it easier to read.
+    *Por que?*: Essa técnica quebra a utilização de funções anônimas para o route resolver, facilitando a leitura.
 
-    *Why?*: An `$inject` statement can easily precede the resolver to handle making any dependencies minification safe.
+    *Por que?*: Uma declaração `$inject` pode facilmente preceder o resolver para manipular qualquer minificação de dependência de forma segura.
 
     ```javascript
-    /* recommended */
+    /* recomendado */
     function config($routeProvider) {
         $routeProvider
             .when('/avengers', {
@@ -1726,7 +1726,7 @@ Nota: A dependência do exemplo no serviço `movieService` não é segura para m
     }
     ```
 
-**[Back to top](#table-of-contents)**
+**[Voltar para o topo](#indice)**
 
 ## Minification and Annotation
 
