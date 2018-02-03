@@ -1728,20 +1728,20 @@ Nota: A dependência do exemplo no serviço `movieService` não é segura para m
 
 **[Voltar para o topo](#indice)**
 
-## Minification and Annotation
+## Minificação e Anotação
 
 ### ng-annotate
-###### [Style [Y100](#style-y100)]
+###### [Estilo [Y100](#estilo-y100)]
 
-  - Use [ng-annotate](//github.com/olov/ng-annotate) for [Gulp](http://gulpjs.com) or [Grunt](http://gruntjs.com) and comment functions that need automated dependency injection using `/* @ngInject */`
+  - Use [ng-annotate](//github.com/olov/ng-annotate) para o [Gulp](http://gulpjs.com) ou [Grunt](http://gruntjs.com) e comente funções que precisam de dependencia automatizada utilizando `/* @ngInject */`
 
-    *Why?*: This safeguards your code from any dependencies that may not be using minification-safe practices.
+    *Por que?*: Isso protege seu código de qualquer dependência que pode não estar utilizando praticas de minificação seguras.
 
-    *Why?*: [`ng-min`](https://github.com/btford/ngmin) is deprecated
+    *Por que?*: [`ng-min`](https://github.com/btford/ngmin) foi descontinuado
 
-    >I prefer Gulp as I feel it is easier to write, to read, and to debug.
+    >Eu prefiro Gulp pois eu sinto que ele é mais fácil de escrever, ler e debugar.
 
-    The following code is not using minification safe dependencies.
+    O código a seguir no está utilizando minificação segura de dependências.
 
     ```javascript
     angular
@@ -1761,7 +1761,7 @@ Nota: A dependência do exemplo no serviço `movieService` não é segura para m
     }
     ```
 
-    When the above code is run through ng-annotate it will produce the following output with the `$inject` annotation and become minification-safe.
+    Quando o código acima está executando através do ng-annotate isso irá produzir a seguinte saída com a anotação `$inject` e se tornar segura a minificação.
 
     ```javascript
     angular
@@ -1783,12 +1783,12 @@ Nota: A dependência do exemplo no serviço `movieService` não é segura para m
     AvengersController.$inject = ['storage', 'avengerService'];
     ```
 
-    Note: If `ng-annotate` detects injection has already been made (e.g. `@ngInject` was detected), it will not duplicate the `$inject` code.
+    Nota: Se `ng-annotate` detecta injeção que já foi feita (e.g. `@ngInject` foi detectado), ele no irá duplicar o código`$inject`.
 
-    Note: When using a route resolver you can prefix the resolver's function with `/* @ngInject */` and it will produce properly annotated code, keeping any injected dependencies minification safe.
+    Nota: Ao usar um route resolver você pode prefixar a função resolver com `/* @ngInject */` e isso ir produzir um código anotado adequadamente, mantendo qualquer minificação de dependências injetadas seguras.
 
     ```javascript
-    // Using @ngInject annotations
+    // Usando anotações @ngInject
     function config($routeProvider) {
         $routeProvider
             .when('/avengers', {
@@ -1804,7 +1804,7 @@ Nota: A dependência do exemplo no serviço `movieService` não é segura para m
     }
     ```
 
-    > Note: Starting from Angular 1.3 you can use the [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) directive's `ngStrictDi` parameter to detect any potentially missing minification safe dependencies. When present the injector will be created in "strict-di" mode causing the application to fail to invoke functions which do not use explicit function annotation (these may not be minification safe). Debugging info will be logged to the console to help track down the offending code. I prefer to only use `ng-strict-di` for debugging purposes only.
+    > Nota: A partir do Angular 1.3 você pode usar a o parâmetro `ngStrictDi` da diretiva [`ngApp`](https://docs.angularjs.org/api/ng/directive/ngApp) `ngStrictDi` para detectar qualquer minificação de dependência segura potencialmente esquecida. Quando presente o injector será criado no modo "strict-di" provocando uma falha na aplicação ao invocar funções que não utilizam a anotação da função explicitamente. O debug irá ser registrado no log para o console para ajudar a rastrear o código problemático. Eu prefiro realmente usar `ng-strict-di` apenas para propósitos de debug.
     `<body ng-app="APP" ng-strict-di>`
 
 ### Use Gulp or Grunt for ng-annotate
